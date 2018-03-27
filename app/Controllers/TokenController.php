@@ -16,7 +16,6 @@ class TokenController extends Controller
 {
     public function getToken($request, $response)
     {
-        var_dump("getToken");
         User::create([
             'email' => $request->getParam('email'),
             'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT, ['cost' => 5]),

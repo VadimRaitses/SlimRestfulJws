@@ -21,7 +21,7 @@ class EntityController extends Controller
             $entities = $this->db->table('entity')->get()->toArray();
             return $response->withStatus(200)
                 ->withHeader("Content-Type", "application/json")
-                ->write(json_encode($entities), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+                ->write(json_encode($entities), JSON_UNESCAPED_SLASHES);
         } catch (\Exception $e) {
            throw new ServerException(":getEntity:".$e->getMessage());
         }
@@ -33,7 +33,7 @@ class EntityController extends Controller
             $entity = $this->db->table('entity')->where('id', $request->getAttribute('id'))->first();
             return $response->withStatus(200)
                 ->withHeader("Content-Type", "application/json")
-                ->write(json_encode($entity), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+                ->write(json_encode($entity), JSON_UNESCAPED_SLASHES);
         } catch (\Exception $e) {
             throw new ServerException(":getEntityById:".$e->getMessage());
         }
@@ -49,7 +49,7 @@ class EntityController extends Controller
             return $response->withStatus(201)
                 ->withHeader("Content-Type", "application/json");
         } catch (\Exception $e) {
-            throw new ServerException(":postEntity:".$e->getMessage());
+            throw new Exception(":postEntity:".$e->getMessage());
         }
     }
 

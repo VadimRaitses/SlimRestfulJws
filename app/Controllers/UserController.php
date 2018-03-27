@@ -17,9 +17,13 @@ class UserController extends Controller
     {
         $email = $this->container["token"]->decoded['sub'];
         $user = $this->db->table('users')->where('email', $email)->first();
-        return $response->withStatus(200)
-            ->withHeader("Content-Type", "application/json")
-            ->write(json_encode($user), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
-    }
+        if ($user)
+            return $response->withStatus(200)
+                ->withHeader("Content-Type", "application/json")
+                ->write(json_encode($user), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+        else
+            return $response->withStatus(404)
+                ->withHeader("Content-Type", "application/json");
 
+    }
 }
