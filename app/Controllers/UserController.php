@@ -20,7 +20,7 @@ class UserController extends Controller
         if ($user)
             return $response->withStatus(200)
                 ->withHeader("Content-Type", "application/json")
-                ->write(json_encode($user), JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT);
+                ->write(json_encode($user), JSON_UNESCAPED_SLASHES);
         else
             return $response->withStatus(404)
                 ->withHeader("Content-Type", "application/json");

@@ -24,6 +24,6 @@ class TokenController extends Controller
         $data = TokenAuthenticationService::addAuthentication($request);
         return $response->withStatus(201)
             ->withHeader("Content-Type", "application/json")
-            ->withHeader(SecurityConstants::$HEADER_STRING, $data);//->write(json_encode($data, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT))
+            ->withHeader(SecurityConstants::$HEADER_STRING, $data);
     }
 }
